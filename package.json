@@ -1,0 +1,33 @@
+{
+  "name": "openlawnz-parsers",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "set SUPPRESS_LOGGING=true && mocha",
+    "parser": "yarn test && cd parser && node index.js --env=local",
+    "debug": "node parseCaseToCase.js --env=dev"
+  },
+  "repository": "git+https://github.com/nmsohn/openlawnz-parsers.git",
+  "author": "openlawnz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmsohn/openlawnz-parsers/issues"
+  },
+  "homepage": "https://github.com/nmsohn/openlawnz-parsers#readme",
+  "dependencies": {
+    "async": "^3.1.0",
+    "chai": "^4.2.0",
+    "dotenv": "^8.1.0",
+    "download": "^7.1.0",
+    "fs-extra": "^8.1.0",
+    "json2csv": "^4.5.3",
+    "mocha": "^6.2.1",
+    "moment": "^2.24.0",
+    "pg-promise": "^9.3.0",
+    "request": "^2.88.0",
+    "rimraf": "^3.0.0",
+    "yargs": "^14.0.0"
+  }
+}
