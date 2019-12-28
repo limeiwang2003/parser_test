@@ -11,14 +11,15 @@ phases:
     commands:
       - echo Logging in to Amazon ECR ...
       - $(aws ecr get-login --no-include-email --region ap-southeast-2)
+      - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION)| head -c 8"
   build:
     commands:
       - echo Build started on `date`
 #      - npm run build
       - echo Building the Docker image...
       - docker build -t parser_docker_image .
-      - docker tag parser_docker_image:latest 766498452075.dkr.ecr.ap-southeast-2.amazonaws.com/parser_docker_image:latest
+      - docker tag parser_docker_image:"${TAG}" 766498452075.dkr.ecr.ap-southeast-2.amazonaws.com/parser_docker_image:"${TAG}"
   post_build:
     commands:
       - echo Pushing the Docker images...
-      - docker push 766498452075.dkr.ecr.ap-southeast-2.amazonaws.com/parser_docker_image:latest  
+      - docker push 766498452075.dkr.ecr.ap-southeast-2.amazonaws.com/parser_docker_image:"${TAG}"  
